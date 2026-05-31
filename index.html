@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Melodia | Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="shape shape-one" aria-hidden="true"></div>
+    <div class="shape shape-two" aria-hidden="true"></div>
+    <div class="notes-field" aria-hidden="true"></div>
+
+    <header class="nav-shell">
+      <a class="brand" href="./index.html"><span class="brand-mark">♪</span><span>Melodia</span></a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="./index.html">Home</a>
+        <a href="./learn.html">Learn</a>
+        <a href="./instruments.html">Instruments</a>
+        <a href="./decoder.html">Decoder</a>
+        <a href="./teachers.html">Teachers</a>
+        <a href="./pricing.html">Plans</a>
+        <a href="./dashboard.html">Dashboard</a>
+        <a href="./about.html">About</a>
+      </nav>
+      <button class="login-btn" type="button">Login</button>
+    </header>
+
+    <main>
+      <section class="hero-section">
+        <div class="hero-copy">
+          <p class="eyebrow">AI music lessons for real progress</p>
+          <h1 id="homeHeadline">Learn Music Smarter with Your Personal AI Tutor</h1>
+          <p class="hero-subtext" id="homeSubtext">Master instruments, decode sheet music, and learn at your own pace with intelligent lessons built just for you.</p>
+          <div class="hero-actions">
+            <a class="primary-action" href="./learn.html">Start Free Trial</a>
+            <a class="secondary-action" href="./tutor.html">See How It Works</a>
+          </div>
+          <div class="trust-row"><span>12k+ learners</span><span>AI feedback</span><span>Live teachers</span></div>
+        </div>
+        <div class="hero-visual">
+          <div class="photo-card hero-photo" role="img" aria-label="Cheerful teenager learning piano with tablet guidance"></div>
+          <div class="lesson-widget card">
+            <div class="widget-icon">♪</div>
+            <div><strong id="homeLessonTitle">Today: C major melody</strong><span id="homeLessonHint">Great rhythm. Try measure 4 once more.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading center">
+          <p class="eyebrow">Explore Melodia</p>
+          <h2>Everything has its own place now.</h2>
+        </div>
+        <div class="page-card-grid">
+          <a class="page-card card" href="./learn.html"><span>01</span><h3>Learning path</h3><p>Choose your instrument, level, goal, and weekly time.</p></a>
+          <a class="page-card card" href="./instruments.html"><span>02</span><h3>Instruments</h3><p>Browse piano, guitar, violin, drums, flute, vocals, and more.</p></a>
+          <a class="page-card card" href="./tutor.html"><span>03</span><h3>AI tutor</h3><p>Practice with a roadmap, interactive lesson, and warm chat coach.</p></a>
+          <a class="page-card card" href="./decoder.html"><span>04</span><h3>Sheet decoder</h3><p>Upload sheet music and translate it into readable note letters.</p></a>
+          <a class="page-card card" href="./teachers.html"><span>05</span><h3>Teachers</h3><p>Book friendly human coaches and trial lessons.</p></a>
+          <a class="page-card card" href="./pricing.html"><span>06</span><h3>Plans</h3><p>Compare Free, Pro, and Elite plans.</p></a>
+          <a class="page-card card" href="./dashboard.html"><span>07</span><h3>Dashboard</h3><p>Track streaks, accuracy, lessons, bookings, and badges.</p></a>
+          <a class="page-card card" href="./about.html"><span>08</span><h3>About us</h3><p>See the product vision and production architecture.</p></a>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading center">
+          <p class="eyebrow">How it works</p>
+          <h2>A clear path from first note to favorite song.</h2>
+        </div>
+        <div class="how-grid">
+          <article class="how-card card"><div class="how-image choose"></div><span class="number">01</span><h3>Choose your instrument</h3><p>Pick a starting point and Melodia adapts the first plan to your level.</p></article>
+          <article class="how-card card"><div class="how-image tutor"></div><span class="number">02</span><h3>Learn with AI tutor</h3><p>Follow guided lessons, ask questions, and get patient explanations.</p></article>
+          <article class="how-card card"><div class="how-image feedback-img"></div><span class="number">03</span><h3>Improve with feedback</h3><p>Use pitch, timing, rhythm, and tempo guidance to practice smarter.</p></article>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast">Welcome to Melodia.</div>
+    <script src="./app.js"></script>
+  </body>
+</html>
