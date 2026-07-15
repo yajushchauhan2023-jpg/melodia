@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "stripe:listen": "stripe listen --forward-to localhost:3000/api/stripe/webhook"
@@ -18,12 +18,15 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "resend": "^4.6.0",
+    "@supabase/supabase-js": "^2.45.4",
     "stripe": "^18.2.0"
   },
   "devDependencies": {
     "@types/node": "^22.15.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "eslint": "^9.30.0",
+    "eslint-config-next": "^15.3.0",
     "prisma": "^6.10.0",
     "typescript": "^5.8.0"
   }

@@ -4,16 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Melodia | Sign Up</title>
+    <meta name="description" content="Create your Melodia account to start a 30-day free trial with AI lessons, instrument learning, sheet decoding, practice feedback, and teachers. Start today." />
+    <link rel="canonical" href="https://melodia-ai.vercel.app/signup" />
+    <meta property="og:title" content="Melodia | Sign Up" />
+    <meta property="og:description" content="Create your Melodia account to start a 30-day free trial with AI lessons, instrument learning, sheet decoding, practice feedback, and teachers. Start today." />
+    <meta property="og:image" content="https://melodia-ai.vercel.app/og-image.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://melodia-ai.vercel.app/signup" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Melodia | Sign Up" />
+    <meta name="twitter:description" content="Create your Melodia account to start a 30-day free trial with AI lessons, instrument learning, sheet decoding, practice feedback, and teachers. Start today." />
+    <meta name="twitter:image" content="https://melodia-ai.vercel.app/og-image.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" /></noscript>
+    <style>
+.skip-link{position:absolute;left:16px;top:8px;z-index:1000;transform:translateY(-160%);padding:10px 14px;border-radius:12px;background:#fff;color:#1f3f9f;font-weight:900;box-shadow:0 10px 26px rgba(35,48,74,.16)}.skip-link:focus{transform:translateY(0);outline:2px solid #3366ff;outline-offset:2px}body{margin:0;font-family:Inter,ui-rounded,system-ui,sans-serif;color:#23304a;background:#fffaf0}.nav-shell{position:sticky;top:14px;z-index:20;width:min(1180px,calc(100% - 28px));margin:14px auto 0;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:10px;font-weight:900;color:#1f3f9f}main{width:min(1180px,calc(100% - 32px));margin:0 auto}h1{margin:0 0 32px;font-family:Poppins,Inter,system-ui,sans-serif;line-height:.98}
+</style>
+    <link rel="preload" href="./styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="./styles.css" /></noscript>
   </head>
   <body data-auth-page="signup">
+    <a class="skip-link" href="#maincontent">Skip to main content</a>
     <div class="shape shape-one" aria-hidden="true"></div>
     <div class="shape shape-two" aria-hidden="true"></div>
     <div class="notes-field" aria-hidden="true"></div>
-    <main class="auth-layout">
+    <main id="maincontent" class="auth-layout">
       <section class="auth-card card">
         <a class="brand auth-brand" href="./login.html"><span class="brand-mark">♪</span><span>Melodia</span></a>
         <p class="eyebrow">Create account</p>
@@ -67,31 +84,8 @@
         </form>
       </div>
     </div>
-    <div class="toast" id="toast">Account created.</div>
-    <script>
-      (() => {
-        const safeSet = (key, value) => {
-          try { localStorage.setItem(key, value); } catch {}
-        };
-        const form = document.getElementById("signupForm");
-        const modal = document.getElementById("questionnaireModal");
-        const questionnaire = document.getElementById("questionnaireForm");
-        form?.addEventListener("submit", (event) => {
-          event.preventDefault();
-          safeSet("melodiaLoggedIn", "true");
-          safeSet("melodiaSubscription", "trial");
-          modal?.classList.add("open");
-          modal?.setAttribute("aria-hidden", "false");
-        });
-        questionnaire?.addEventListener("submit", (event) => {
-          event.preventDefault();
-          const data = new FormData(questionnaire);
-          safeSet("melodiaProfile", JSON.stringify(Object.fromEntries(data.entries())));
-          safeSet("melodiaOnboarded", "true");
-          window.location.href = "index.html";
-        });
-      })();
-    </script>
-    <script src="./app.js"></script>
+    <footer class="site-footer" aria-label="Site footer"><p>Melodia helps learners practice with structure, encouragement, and clear progress.</p><nav aria-label="Footer navigation"><a href="./pricing.html">Plans</a><a href="./about.html">About</a><a href="./dashboard.html">Dashboard</a></nav></footer>
+    <div class="toast" id="toast" role="status" aria-live="polite">Account created.</div>
+    <script type="module" src="./app.js"></script>
   </body>
 </html>

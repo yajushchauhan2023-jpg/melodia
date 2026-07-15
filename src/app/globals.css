@@ -1,5 +1,6 @@
 :root {
   --blue: #4169e1;
+  --focus: #3366ff;
   --blue-dark: #1f3f9f;
   --coral: #ff7a59;
   --yellow: #f8c64d;
@@ -21,6 +22,39 @@ body {
 }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; }
+
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+[tabindex]:focus {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: 8px;
+  z-index: 1000;
+  transform: translateY(-160%);
+  padding: 10px 14px;
+  border-radius: 12px;
+  color: var(--blue-dark);
+  background: #fff;
+  font-weight: 900;
+  box-shadow: var(--shadow);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
 .shell { width: min(1160px, calc(100% - 32px)); margin: 0 auto; }
 .nav { position: sticky; top: 14px; z-index: 10; display: flex; justify-content: space-between; align-items: center; gap: 16px; margin: 14px auto 0; padding: 12px 16px; border: 1px solid var(--border); border-radius: 999px; background: rgba(255,255,255,.9); box-shadow: 0 10px 30px rgba(35,48,74,.08); }
 .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; color: var(--blue-dark); }
@@ -41,10 +75,11 @@ p { color: var(--muted); line-height: 1.7; }
 .badge { display: inline-flex; min-height: 32px; align-items: center; border-radius: 999px; padding: 0 12px; background: #fff4dc; color: #8a6419; font-weight: 800; }
 .features { display: grid; gap: 10px; padding: 0; margin: 18px 0 24px; list-style: none; color: var(--muted); }
 .features li::before { content: "♪"; color: var(--coral); margin-right: 8px; }
-.button { min-height: 46px; display: inline-flex; justify-content: center; align-items: center; border: 0; border-radius: 999px; padding: 0 18px; color: #fff; background: var(--blue); font-weight: 850; cursor: pointer; }
+.button { min-width: 44px; min-height: 46px; display: inline-flex; justify-content: center; align-items: center; border: 0; border-radius: 999px; padding: 0 18px; color: #fff; background: var(--blue); font-weight: 850; cursor: pointer; }
 .button.secondary { color: var(--blue-dark); background: #eef3ff; }
 .button.danger { background: var(--coral); }
 .button:disabled { opacity: .58; cursor: progress; }
+.button:hover { filter: brightness(1.04); text-decoration: none; }
 .billing-row { display: flex; justify-content: space-between; gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--border); }
 .progress { height: 14px; overflow: hidden; border-radius: 999px; background: #edf0f5; }
 .progress span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--mint), var(--blue)); }

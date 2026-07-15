@@ -13,6 +13,18 @@
     {
       "src": "*.js",
       "use": "@vercel/static"
+    },
+    {
+      "src": "scripts/*.js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "sitemap.xml",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "robots.txt",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
