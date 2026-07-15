@@ -1,47 +1,11 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Melodia | Student Dashboard</title>
-    <meta name="description" content="Track your Melodia music progress, practice streak, weekly hours, accuracy score, recent lessons, achievements, bookings, and billing details. Start today." />
-    <link rel="canonical" href="https://melodia-ai.vercel.app/dashboard" />
-    <meta property="og:title" content="Melodia | Student Dashboard" />
-    <meta property="og:description" content="Track your Melodia music progress, practice streak, weekly hours, accuracy score, recent lessons, achievements, bookings, and billing details. Start today." />
-    <meta property="og:image" content="https://melodia-ai.vercel.app/og-image.jpg" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://melodia-ai.vercel.app/dashboard" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Melodia | Student Dashboard" />
-    <meta name="twitter:description" content="Track your Melodia music progress, practice streak, weekly hours, accuracy score, recent lessons, achievements, bookings, and billing details. Start today." />
-    <meta name="twitter:image" content="https://melodia-ai.vercel.app/og-image.jpg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" /></noscript>
-    <style>
-.skip-link{position:absolute;left:16px;top:8px;z-index:1000;transform:translateY(-160%);padding:10px 14px;border-radius:12px;background:#fff;color:#1f3f9f;font-weight:900;box-shadow:0 10px 26px rgba(35,48,74,.16)}.skip-link:focus{transform:translateY(0);outline:2px solid #3366ff;outline-offset:2px}body{margin:0;font-family:Inter,ui-rounded,system-ui,sans-serif;color:#23304a;background:#fffaf0}.nav-shell{position:sticky;top:14px;z-index:20;width:min(1180px,calc(100% - 28px));margin:14px auto 0;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:10px;font-weight:900;color:#1f3f9f}main{width:min(1180px,calc(100% - 32px));margin:0 auto}h1{margin:0 0 32px;font-family:Poppins,Inter,system-ui,sans-serif;line-height:.98}
-</style>
-    <link rel="preload" href="./styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript><link rel="stylesheet" href="./styles.css" /></noscript>
-  </head>
-  <body>
-    <a class="skip-link" href="#maincontent">Skip to main content</a><div class="shape shape-one" aria-hidden="true"></div><div class="shape shape-two" aria-hidden="true"></div><div class="notes-field" aria-hidden="true"></div>
-    <header class="nav-shell"><a class="brand" href="./index.html"><span class="brand-mark">♪</span><span>Melodia</span></a><nav class="desktop-nav"><a href="./index.html">Home</a><a href="./learn.html">Learn</a><a href="./instruments.html">Instruments</a><a href="./decoder.html">Decoder</a><a href="./teachers.html">Teachers</a><a href="./pricing.html">Plans</a><a href="./dashboard.html">Dashboard</a><a href="./about.html">About</a></nav><button class="login-btn">Login</button></header>
-    <main id="maincontent">
+  <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Melodia | Dashboard</title><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" /><link rel="stylesheet" href="./styles.css" /></head>
+  <body><div class="shape shape-one" aria-hidden="true"></div><div class="shape shape-two" aria-hidden="true"></div><div class="notes-field" aria-hidden="true"></div>
+    <header class="nav-shell"><a class="brand" href="./index.html"><span class="brand-mark">♪</span><span>Melodia</span></a><nav class="desktop-nav"><a href="./index.html">Home</a><a href="./tutor.html">AI Tutor</a><a href="./decoder.html">Decoder</a><a href="./teachers.html">Teachers</a><a href="./pricing.html">Plans</a><a href="./dashboard.html">Dashboard</a><a href="./about.html">About</a></nav><div class="session-chrome" id="sessionChrome"><button class="login-btn" type="button">Login</button><div class="profile-menu" id="profileMenu"><button class="profile-trigger" id="profileTrigger" type="button" aria-haspopup="true" aria-expanded="false"><span class="profile-avatar" id="profileAvatar">M</span></button><div class="profile-dropdown" id="profileDropdown" role="menu"><span class="profile-dropdown-name" id="profileDropdownName">Melodia student</span><a href="./pricing.html" role="menuitem">Plans</a><a href="./dashboard.html" role="menuitem">Dashboard</a><a href="./profile.html" role="menuitem">Profile</a><a href="./settings.html" role="menuitem">Settings</a><button class="logout-btn" id="logoutBtn" type="button" role="menuitem">Log out</button></div></div></div></header>
+    <main>
       <section class="page-hero"><p class="eyebrow">Student dashboard</p><h1>See your progress and billing in one place.</h1><p>Track music progress, manage your 30-day trial, update payment details, upgrade, downgrade, or cancel anytime.</p></section>
-      <section class="dashboard-overview">
-        <div class="progress-card card featured-progress">
-          <div class="ring" style="--progress:82"><span>82%</span></div>
-          <div><p class="eyebrow">This week</p><h2>Strong progress, steady rhythm.</h2><p>You practiced 4.5 hours, completed 3 lessons, and improved note accuracy by 8%.</p></div>
-        </div>
-        <div class="dashboard-grid">
-          <div class="stats-card card"><span>Practice streak</span><strong>7 days</strong><span>Weekly hours</span><strong>4.5</strong><span>Teacher bookings</span><strong>2 upcoming</strong><span>Decoder history</span><strong>14 sheets</strong></div>
-          <div class="recent-card card"><h3>Next lesson</h3><p>C major scale with two-hand coordination.</p><a class="secondary-action small" href="./tutor.html">Continue lesson</a></div>
-          <div class="recent-card card"><h3>Practice focus</h3><p>Measure 4 needs slower repetition at 60 BPM before increasing speed.</p><div class="milestone-art">♪</div></div>
-          <div class="achievements card"><h3>Achievement badges</h3><div><span>First Song</span><span>7 Day Streak</span><span>Theory Explorer</span><span>Perfect Pitch</span><span>Rhythm Master</span></div></div>
-        </div>
-      </section>
+      <section><div class="dashboard-grid"><div class="progress-card card"><div class="ring" style="--progress:82"><span>82%</span></div><strong>Accuracy score</strong></div><div class="stats-card card"><span>Practice streak</span><strong>7 days</strong><span>Weekly hours</span><strong>4.5</strong><span>Teacher bookings</span><strong>2 upcoming</strong><span>Decoder history</span><strong>14 sheets</strong></div><div class="recent-card card"><h3>Recent lessons</h3><p>C major scale, rhythm clapback, sight-reading basics.</p><div class="milestone-art">♪</div></div><div class="achievements card"><h3>Achievement badges</h3><div><span>First Song</span><span>7 Day Streak</span><span>Theory Explorer</span><span>Perfect Pitch</span><span>Rhythm Master</span></div></div></div></section>
       <section class="billing-dashboard card">
         <div class="billing-head">
           <div><p class="eyebrow">Billing</p><h2>24 days left in your free trial</h2><p>Current plan: <strong id="dashboardPlan">Pro</strong>. Next billing date: <strong>June 16, 2026</strong>.</p></div>
@@ -62,7 +26,6 @@
         <div class="billing-message" id="billingMessage">Your card will not be charged until your free trial ends.</div>
       </section>
     </main>
-    <footer class="site-footer" aria-label="Site footer"><p>Melodia helps learners practice with structure, encouragement, and clear progress.</p><nav aria-label="Footer navigation"><a href="./pricing.html">Plans</a><a href="./about.html">About</a><a href="./dashboard.html">Dashboard</a></nav></footer>
-    <div class="toast" id="toast" role="status" aria-live="polite">Dashboard loaded.</div><script type="module" src="./app.js"></script>
+    <div class="toast" id="toast">Dashboard loaded.</div><script src="./app.js"></script>
   </body>
 </html>

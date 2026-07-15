@@ -1,38 +1,17 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
 import { ClerkProvider, SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://melodia-ai.vercel.app"),
-  title: {
-    default: "Melodia | AI Music Learning Platform",
-    template: "%s | Melodia"
-  },
-  description: "Learn music smarter with Melodia, your personal AI tutor for instruments, sheet music decoding, practice feedback, progress tracking, and live teachers online.",
-  alternates: {
-    canonical: "/"
-  },
-  openGraph: {
-    title: "Melodia | AI Music Learning Platform",
-    description: "Learn music smarter with Melodia, your personal AI tutor for instruments, sheet music decoding, practice feedback, progress tracking, and live teachers online.",
-    images: ["/og-image.jpg"],
-    type: "website"
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Melodia | AI Music Learning Platform",
-    description: "Learn music smarter with Melodia, your personal AI tutor for instruments, sheet music decoding, practice feedback, progress tracking, and live teachers online.",
-    images: ["/og-image.jpg"]
-  }
+  title: "Melodia Billing",
+  description: "AI-powered music learning with Stripe subscriptions"
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <ClerkProvider>
       <html lang="en">
         <body>
-          <a className="skip-link" href="#maincontent">Skip to main content</a>
           <header className="nav shell">
             <a className="brand" href="/">
               <span className="mark">♪</span>

@@ -1,17 +1,10 @@
-import type { Metadata } from "next";
 import { requirePremiumAccess } from "@/lib/access";
-
-export const metadata: Metadata = {
-  title: "Sheet Music Decoder",
-  description: "Upload sheet music to Melodia and translate notation into readable notes, playback, tempo controls, instrument adaptation, and fingering guidance. Start today.",
-  alternates: { canonical: "/decoder" }
-};
 
 export default async function DecoderPage() {
   await requirePremiumAccess();
 
   return (
-    <main id="maincontent" className="shell">
+    <main className="shell">
       <section className="hero">
         <p className="eyebrow">Premium sheet decoder</p>
         <h1>Upload sheet music and decode it with Melodia.</h1>

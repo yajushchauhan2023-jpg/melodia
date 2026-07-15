@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Melodia | Settings</title><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" /><link rel="stylesheet" href="./styles.css" /></head>
+  <body>
+    <div class="shape shape-one" aria-hidden="true"></div><div class="shape shape-two" aria-hidden="true"></div><div class="notes-field" aria-hidden="true"></div>
+    <header class="nav-shell"><a class="brand" href="./index.html"><span class="brand-mark">♪</span><span>Melodia</span></a><nav class="desktop-nav"><a href="./index.html">Home</a><a href="./tutor.html">AI Tutor</a><a href="./decoder.html">Decoder</a><a href="./teachers.html">Teachers</a><a href="./pricing.html">Plans</a><a href="./dashboard.html">Dashboard</a><a href="./about.html">About</a></nav><div class="session-chrome" id="sessionChrome"><button class="login-btn" type="button">Login</button><div class="profile-menu" id="profileMenu"><button class="profile-trigger" id="profileTrigger" type="button" aria-haspopup="true" aria-expanded="false"><span class="profile-avatar" id="profileAvatar">M</span></button><div class="profile-dropdown" id="profileDropdown" role="menu"><span class="profile-dropdown-name" id="profileDropdownName">Melodia student</span><a href="./pricing.html" role="menuitem">Plans</a><a href="./dashboard.html" role="menuitem">Dashboard</a><a href="./profile.html" role="menuitem">Profile</a><a href="./settings.html" role="menuitem">Settings</a><button class="logout-btn" id="logoutBtn" type="button" role="menuitem">Log out</button></div></div></div></header>
+    <main>
+      <section class="page-hero"><p class="eyebrow">Settings</p><h1>Manage your account and preferences.</h1><p>Update notifications, practice reminders, and account security.</p></section>
+      <section>
+        <div class="dashboard-grid">
+          <div class="recent-card card">
+            <h3>Notifications</h3>
+            <p>Practice reminders, lesson updates, and billing alerts.</p>
+            <label style="display:flex;align-items:center;gap:8px;margin-top:10px;"><input type="checkbox" checked /> Daily practice reminder</label>
+            <label style="display:flex;align-items:center;gap:8px;margin-top:8px;"><input type="checkbox" checked /> Weekly progress summary</label>
+            <label style="display:flex;align-items:center;gap:8px;margin-top:8px;"><input type="checkbox" /> Product announcements</label>
+          </div>
+          <div class="recent-card card">
+            <h3>Account security</h3>
+            <p>Update your password or manage where you're signed in.</p>
+            <div class="billing-actions" style="margin-top:12px;">
+              <button class="secondary-action small" type="button" id="changePasswordBtn">Change password</button>
+              <button class="secondary-action small danger-soft" type="button" id="signOutAllBtn">Sign out of all devices</button>
+            </div>
+          </div>
+        </div>
+        <div class="recent-card card" style="margin-top:24px;">
+          <h3>Billing</h3>
+          <p>Manage your plan, payment method, and invoices.</p>
+          <a class="primary-action small" href="./dashboard.html">Go to billing dashboard</a>
+        </div>
+      </section>
+    </main>
+    <div class="toast" id="toast">Settings loaded.</div>
+    <script src="./app.js"></script>
+    <script>
+      (() => {
+        const toast = (msg) => {
+          const el = document.getElementById("toast");
+          if (!el) return;
+          el.textContent = msg;
+          el.classList.add("show");
+          setTimeout(() => el.classList.remove("show"), 2400);
+        };
+        document.getElementById("changePasswordBtn")?.addEventListener("click", () => toast("Password reset link sent to your email."));
+        document.getElementById("signOutAllBtn")?.addEventListener("click", () => toast("Signed out of all other devices."));
+      })();
+    </script>
+  </body>
+</html>

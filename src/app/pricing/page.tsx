@@ -1,16 +1,9 @@
-import type { Metadata } from "next";
 import { plans } from "@/lib/plans";
 import { CheckoutButton } from "@/components/billing/CheckoutButton";
 
-export const metadata: Metadata = {
-  title: "Plans and Free Trial",
-  description: "Compare Melodia Free Trial, Pro, and Elite plans with 30 days free, secure billing, AI lessons, sheet decoding, feedback, and teacher support. Start today.",
-  alternates: { canonical: "/pricing" }
-};
-
 export default function PricingPage() {
   return (
-    <main id="maincontent" className="shell">
+    <main className="shell">
       <section className="hero">
         <p className="eyebrow">Subscription</p>
         <h1>Start with 30 days completely free.</h1>

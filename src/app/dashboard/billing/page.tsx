@@ -17,7 +17,7 @@ export default async function BillingDashboardPage() {
   const currentPlan = user.currentPlan === "elite" ? "elite" : "pro";
 
   return (
-    <main id="maincontent" className="shell">
+    <main className="shell">
       <section className="hero">
         <p className="eyebrow">Billing dashboard</p>
         <h1>Manage your Melodia subscription.</h1>
