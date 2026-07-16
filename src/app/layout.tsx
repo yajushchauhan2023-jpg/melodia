@@ -18,9 +18,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <span>Melodia</span>
             </a>
             <nav className="nav-links">
+              <a href="/tutor">AI Tutor</a>
               <a href="/pricing">Plans</a>
               <a href="/dashboard">Dashboard</a>
               <a href="/dashboard/billing">Billing</a>
+              <a href="/profile">Profile</a>
               <a href="/about">About</a>
             </nav>
             <SignedOut>

@@ -33,6 +33,14 @@ model User {
   createdAt            DateTime           @default(now())
   updatedAt            DateTime           @updatedAt
   emailLogs            EmailLog[]
+
+  // Lesson plan profile, collected once at signup onboarding
+  instrument           String?
+  level                String?
+  goal                 String?
+  weeklyTime           String?
+  lessonIndex          Int                @default(0)
+  lessonPlanUpdatedAt  DateTime?
 }
 
 model EmailLog {
