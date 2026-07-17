@@ -574,8 +574,11 @@ p, small { color: var(--muted); line-height: 1.7; }
 .vocals-img { background-image: url("https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=800&q=80"); }
 .saxophone-img { background-image: url("https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?auto=format&fit=crop&w=800&q=80"); }
 
-.tutor-layout { grid-template-columns: 240px minmax(360px, 1fr) 330px; align-items: stretch; }
-.roadmap { display: grid; gap: 10px; align-content: start; }
+.tutor-layout { grid-template-columns: 1fr; gap: 24px; }
+.tutor-layout .chat-panel { width: 100%; }
+.tutor-lower-grid { display: grid; grid-template-columns: 260px minmax(360px, 1fr); gap: 22px; align-items: stretch; }
+.roadmap { display: flex; flex-direction: column; }
+#roadmapList { display: grid; gap: 10px; margin-top: 4px; }
 .roadmap-item { text-align: left; padding-inline: 14px; }
 .lesson-top { display: flex; justify-content: space-between; gap: 18px; align-items: flex-start; margin-bottom: 22px; }
 .lesson-visual { display: none; }
@@ -673,7 +676,7 @@ p, small { color: var(--muted); line-height: 1.7; }
 .chat-top { gap: 12px; margin-bottom: 18px; }
 .chat-top strong, .chat-top small { display: block; }
 .chat-log {
-  height: 310px;
+  height: 360px;
   overflow: auto;
   display: flex;
   flex-direction: column;
@@ -1049,7 +1052,7 @@ p, small { color: var(--muted); line-height: 1.7; }
 @keyframes scan { 0%,100% { top: 26%; } 50% { top: 70%; } }
 
 @media (max-width: 1080px) {
-  .hero-section, .learn-section, .decoder-section, .feedback-card, .architecture-section, .tutor-layout, .checkout-demo {
+  .hero-section, .learn-section, .decoder-section, .feedback-card, .architecture-section, .tutor-layout, .checkout-demo, .tutor-lower-grid {
     grid-template-columns: 1fr;
   }
   .hero-section { min-height: auto; }

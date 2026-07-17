@@ -189,22 +189,70 @@ if (questionnaireForm) questionnaireForm.addEventListener("submit", (event) => {
   }, 700);
 });
 
-document.querySelectorAll(".roadmap-item[data-lesson]").forEach((button) => {
-  button.addEventListener("click", () => {
+const TUTOR_STAGES = {
+  Beginner: [
+    { title: "Posture, hold, and first sounds", note: "Get comfortable holding your {instrument} and produce your first clean, confident sounds." },
+    { title: "Reading your first notes", note: "Learn to recognize and play the first five notes on {instrument}." },
+    { title: "Simple rhythms", note: "Practice steady beats and basic rhythm patterns on {instrument}." },
+    { title: "Your first short piece", note: "Put it all together and play a short beginner piece on {instrument}." },
+    { title: "Mini quiz", note: "A quick check-in on everything you've covered so far on {instrument}." }
+  ],
+  Intermediate: [
+    { title: "Expanding your range", note: "Extend the notes and positions you're comfortable with on {instrument}." },
+    { title: "Chords & harmony basics", note: "Start combining notes into chords and simple harmony on {instrument}." },
+    { title: "Rhythm variety", note: "Practice syncopation and mixed rhythm patterns on {instrument}." },
+    { title: "Learning a full song", note: "Work through a complete intermediate-level song on {instrument}." },
+    { title: "Mini quiz", note: "A quick check-in on everything you've covered so far on {instrument}." }
+  ],
+  Advanced: [
+    { title: "Advanced technique refinement", note: "Sharpen speed, precision, and tone control on {instrument}." },
+    { title: "Improvisation basics", note: "Start improvising within a scale or chord progression on {instrument}." },
+    { title: "Complex rhythms & meter changes", note: "Tackle odd meters and layered rhythms on {instrument}." },
+    { title: "Performance-ready polish", note: "Refine a performance-ready piece on {instrument} down to the last detail." },
+    { title: "Mini quiz", note: "A quick check-in on everything you've covered so far on {instrument}." }
+  ]
+};
+const TUTOR_VISUALS = { Piano: "piano", Guitar: "guitar", Violin: "violin", Vocals: "vocals" };
+
+function renderTutorRoadmap() {
+  const roadmapList = document.getElementById("roadmapList");
+  if (!roadmapList) return;
+
+  const profile = readProfile();
+  const instrument = profile?.instrument || "Piano";
+  const level = TUTOR_STAGES[profile?.level] ? profile.level : "Beginner";
+  const stages = TUTOR_STAGES[level].map((stage) => ({
+    title: stage.title,
+    note: stage.note.replaceAll("{instrument}", instrument)
+  }));
+
+  const visualKey = TUTOR_VISUALS[instrument];
+  document.querySelectorAll(".lesson-visual").forEach((view) => view.classList.remove("active"));
+  if (visualKey) {
+    document.getElementById(`${visualKey}Lesson`)?.classList.add("active");
+  } else {
+    document.getElementById("genericLesson")?.classList.add("active");
+  }
+
+  roadmapList.innerHTML = stages.map((stage, index) => `
+    <button class="roadmap-item${index === 0 ? " active" : ""}" data-index="${index}">${instrument}: ${stage.title}</button>
+  `).join("");
+
+  const setActiveStage = (index) => {
     document.querySelectorAll(".roadmap-item").forEach((item) => item.classList.remove("active"));
-    document.querySelectorAll(".lesson-visual").forEach((view) => view.classList.remove("active"));
-    button.classList.add("active");
-    const lesson = button.dataset.lesson;
-    document.getElementById(`${lesson}Lesson`).classList.add("active");
-    const titles = {
-      piano: "Piano fingering guide",
-      guitar: "Guitar chord placement",
-      violin: "Violin bowing direction",
-      vocals: "Vocal pitch tracker"
-    };
-    document.getElementById("lessonTitle").textContent = titles[lesson];
+    roadmapList.children[index]?.classList.add("active");
+    document.getElementById("lessonTitle").textContent = `${instrument}: ${stages[index].title}`;
+    const noteEls = document.querySelectorAll(".lesson-visual.active .lesson-note, #genericLesson .lesson-note");
+    noteEls.forEach((el) => { el.textContent = stages[index].note; });
+  };
+
+  roadmapList.querySelectorAll(".roadmap-item").forEach((button) => {
+    button.addEventListener("click", () => setActiveStage(Number(button.dataset.index)));
   });
-});
+
+  setActiveStage(0);
+}
+renderTutorRoadmap();
 
 document.querySelectorAll(".piano button").forEach((key) => {
   key.addEventListener("click", () => {
