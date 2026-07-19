@@ -13,7 +13,7 @@ const STARTER_REPLIES = [
 
 export function TutorChat({ instrument }: { instrument: string }) {
   const [messages, setMessages] = useState<Message[]>([
-    { role: "tutor", text: `Hi! I'm your ${instrument} tutor. Ask me anything about your current lesson, or tell me how practice is going.` }
+    { role: "tutor", text: `Hi! I'm your ${instrument} coach. Ask me anything about your current lesson, or tell me how practice is going.` }
   ]);
   const [input, setInput] = useState("");
   const [sending, setSending] = useState(false);
@@ -33,7 +33,7 @@ export function TutorChat({ instrument }: { instrument: string }) {
 
   return (
     <div className="tutor-chat card">
-      <h3>Chat with your tutor</h3>
+      <h3>Chat with your Coach</h3>
       <div className="tutor-chat-log">
         {messages.map((message, i) => (
           <div key={i} className={`tutor-chat-bubble ${message.role}`}>

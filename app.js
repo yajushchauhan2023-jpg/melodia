@@ -57,7 +57,7 @@ const mockBackend = {
     realtime: "WebSockets",
     audio: "TensorFlow audio models",
     decoder: "OCR + symbolic music parsing",
-    tutor: "LLM orchestration with educational memory",
+    tutor: "LLM orchestration with coaching memory",
     scheduling: "Calendar integration",
     video: "LiveKit"
   },
@@ -117,7 +117,7 @@ document.addEventListener("click", (event) => {
   const startButton = event.target.closest("[data-start]");
   if (!startButton) return;
   state.instrument = startButton.dataset.start;
-  showToast(`${state.instrument} learning flow opened with roadmap, tutor, and feedback.`);
+  showToast(`${state.instrument} learning flow opened with roadmap, coach, and feedback.`);
   window.location.href = "tutor.html";
 });
 
@@ -424,7 +424,7 @@ function personalizeHome() {
   }
   if (lessonTitle) lessonTitle.textContent = `Today: ${profile.instrument} ${profile.style || "practice"} path`;
   if (lessonHint) {
-    lessonHint.textContent = `AI focus: ${profile.purpose}. Support mode: ${profile.support || "AI tutor"}. Start with a short warmup and one confidence-building drill.`;
+    lessonHint.textContent = `Coaching focus: ${profile.purpose}. Support mode: ${profile.support || "Coach"}. Start with a short warmup and one confidence-building drill.`;
   }
 }
 

@@ -41,7 +41,7 @@ export default async function ProfilePage() {
       </section>
       <div className="actions">
         <a className="button" href="/onboarding">{hasLessonPlan ? "Update lesson plan" : "Build my lesson plan"}</a>
-        <a className="button secondary" href="/tutor">Go to AI tutor</a>
+        <a className="button secondary" href="/tutor">Go to Coach</a>
       </div>
     </main>
   );

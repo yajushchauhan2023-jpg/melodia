@@ -4,7 +4,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Melodia Billing",
-  description: "AI-powered music learning with Stripe subscriptions"
+  description: "Personalised music coaching with Stripe subscriptions"
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <span>Melodia</span>
             </a>
             <nav className="nav-links">
-              <a href="/tutor">AI Tutor</a>
+              <a href="/tutor">Coach</a>
               <a href="/pricing">Plans</a>
               <a href="/dashboard">Dashboard</a>
               <a href="/dashboard/billing">Billing</a>

@@ -9,7 +9,7 @@ export const plans = {
     price: "$14.99",
     monthlyCents: 1499,
     stripePriceId: () => requiredEnv("STRIPE_PRO_PRICE_ID"),
-    features: ["Unlimited AI learning", "Advanced sheet decoder", "Performance analysis", "Personalized plans"]
+    features: ["Unlimited coaching", "Advanced sheet decoder", "Performance analysis", "Personalized plans"]
   },
   elite: {
     id: "elite",

@@ -19,8 +19,8 @@ export default async function TutorPage() {
   return (
     <main className="shell tutor-shell">
       <section className="hero tutor-hero">
-        <p className="eyebrow">AI tutor</p>
-        <h1>Your AI tutor</h1>
+        <p className="eyebrow">Coach</p>
+        <h1>Your Coach</h1>
         <p>{user.instrument} · {user.level} · {user.goal}</p>
       </section>
 
