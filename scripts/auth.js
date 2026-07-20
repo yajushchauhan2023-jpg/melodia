@@ -17,8 +17,7 @@ function saveQuestionnaire(event) {
     level: formData.get("level"),
     purpose: formData.get("purpose"),
     time: formData.get("time"),
-    style: formData.get("style"),
-    support: formData.get("support")
+    style: formData.get("style")
   };
   storage.set("melodiaProfile", JSON.stringify(profile));
   storage.set("melodiaSelectedInstrument", profile.instrument);

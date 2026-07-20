@@ -69,7 +69,6 @@ function initLoginButtons() {
     button.addEventListener("click", () => {
       if (isLoggedIn()) {
         storage.remove("melodiaLoggedIn");
-        storage.remove("melodiaProfile");
         showToast("Logged out.");
         setTimeout(() => {
           window.location.href = "login.html";
@@ -115,7 +114,14 @@ export function handleAuthSubmit(event, mode) {
   } else if (!storage.get("melodiaSubscription")) {
     storage.set("melodiaSubscription", "none");
   }
-  openQuestionnaire();
+  if (storage.get("melodiaOnboarded") === "true") {
+    showToast(mode === "signup" ? "Account created. Welcome back!" : "Welcome back!");
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 500);
+  } else {
+    openQuestionnaire();
+  }
 }
 
 function openQuestionnaire() {
@@ -143,7 +149,7 @@ export function personalizeHome(currentPage) {
   }
   if (lessonTitle) lessonTitle.textContent = `Today: ${profile.instrument} ${profile.style || "practice"} path`;
   if (lessonHint) {
-    lessonHint.textContent = `AI focus: ${profile.purpose}. Support mode: ${profile.support || "AI tutor"}. Start with a short warmup and one confidence-building drill.`;
+    lessonHint.textContent = `AI focus: ${profile.purpose}. Start with a short warmup and one confidence-building drill.`;
   }
 }
 

@@ -57,38 +57,11 @@
               <option>Pop songs</option><option>Classical foundations</option><option>Jazz and improvisation</option><option>Worship and gospel</option><option>Exam pieces</option>
             </select>
           </label>
-          <label>What kind of support do you want?
-            <select name="support" required>
-              <option>Coach only</option><option>Coach plus occasional teacher</option><option>Live teacher coaching</option>
-            </select>
-          </label>
           <button class="primary-action" type="submit">Create my home page</button>
         </form>
       </div>
     </div>
     <div class="toast" id="toast">Logged in.</div>
-    <script>
-      (() => {
-        const safeSet = (key, value) => {
-          try { localStorage.setItem(key, value); } catch {}
-        };
-        const form = document.getElementById("loginForm");
-        const modal = document.getElementById("questionnaireModal");
-        const questionnaire = document.getElementById("questionnaireForm");
-        form?.addEventListener("submit", (event) => {
-          event.preventDefault();
-          safeSet("melodiaLoggedIn", "true");
-          modal?.classList.add("open");
-          modal?.setAttribute("aria-hidden", "false");
-        });
-        questionnaire?.addEventListener("submit", (event) => {
-          event.preventDefault();
-          const data = new FormData(questionnaire);
-          safeSet("melodiaProfile", JSON.stringify(Object.fromEntries(data.entries())));
-          window.location.href = "index.html";
-        });
-      })();
-    </script>
     <script src="./app.js"></script>
   </body>
 </html>

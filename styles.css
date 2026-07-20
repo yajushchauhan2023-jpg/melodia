@@ -240,6 +240,8 @@ p, small { color: var(--muted); line-height: 1.7; }
 }
 
 .page-hero h1 {
+  max-width: 100%;
+  margin-inline: auto;
   font-size: clamp(2.7rem, 6vw, 5rem);
 }
 
@@ -804,6 +806,7 @@ p, small { color: var(--muted); line-height: 1.7; }
   align-items: center;
   justify-content: space-between;
   gap: 18px;
+  padding: 26px 30px;
   margin-bottom: 22px;
 }
 
@@ -841,14 +844,15 @@ p, small { color: var(--muted); line-height: 1.7; }
 .price-card strong::after { content: "/mo"; color: var(--muted); font-size: 1rem; }
 .badge { position: absolute; right: 18px; top: 18px; background: #fff4dc; color: #8a6419; }
 
-.checkout-demo {
+.checkout-section {
   display: grid;
   grid-template-columns: minmax(0, .9fr) minmax(320px, 1.1fr);
-  gap: 26px;
+  gap: 34px;
   align-items: center;
+  padding: 32px;
 }
 
-.mock-checkout-card {
+.checkout-card {
   display: grid;
   gap: 12px;
   padding: 22px;
@@ -870,14 +874,14 @@ p, small { color: var(--muted); line-height: 1.7; }
   font-size: 1.4rem;
 }
 
-.mock-checkout-card label {
+.checkout-card label {
   display: grid;
   gap: 7px;
   color: var(--muted);
   font-weight: 750;
 }
 
-.mock-checkout-card input {
+.checkout-card input {
   width: 100%;
   min-height: 46px;
   border: 1px solid var(--border);
@@ -1052,7 +1056,7 @@ p, small { color: var(--muted); line-height: 1.7; }
 @keyframes scan { 0%,100% { top: 26%; } 50% { top: 70%; } }
 
 @media (max-width: 1080px) {
-  .hero-section, .learn-section, .decoder-section, .feedback-card, .architecture-section, .tutor-layout, .checkout-demo, .tutor-lower-grid {
+  .hero-section, .learn-section, .decoder-section, .feedback-card, .architecture-section, .tutor-layout, .checkout-section, .tutor-lower-grid {
     grid-template-columns: 1fr;
   }
   .hero-section { min-height: auto; }
@@ -1096,6 +1100,7 @@ p, small { color: var(--muted); line-height: 1.7; }
   .instrument-grid, .dashboard-grid { grid-template-columns: 1fr; }
   .page-card-grid { grid-template-columns: 1fr; }
   .billing-banner, .billing-head { flex-direction: column; }
+  .billing-banner, .checkout-section { padding: 22px; }
   .billing-details, .card-row { grid-template-columns: 1fr; }
   .choice-grid, .choice-grid.three { grid-template-columns: 1fr; }
   .lesson-top, .mode-row, .tempo-control { align-items: flex-start; flex-direction: column; }

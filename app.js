@@ -151,7 +151,6 @@ document.addEventListener("click", (event) => {
 document.querySelectorAll(".logout-btn").forEach((button) => {
   button.addEventListener("click", () => {
     storage.remove("melodiaLoggedIn");
-    storage.remove("melodiaProfile");
     showToast("Logged out.");
     setTimeout(() => {
       window.location.href = "login.html";
@@ -178,8 +177,7 @@ if (questionnaireForm) questionnaireForm.addEventListener("submit", (event) => {
     level: formData.get("level"),
     purpose: formData.get("purpose"),
     time: formData.get("time"),
-    style: formData.get("style"),
-    support: formData.get("support")
+    style: formData.get("style")
   };
   storage.set("melodiaProfile", JSON.stringify(profile));
   storage.set("melodiaOnboarded", "true");
@@ -398,7 +396,14 @@ function handleAuthSubmit(event, mode) {
   } else if (!storage.get("melodiaSubscription")) {
     storage.set("melodiaSubscription", "none");
   }
-  openQuestionnaire();
+  if (storage.get("melodiaOnboarded") === "true") {
+    showToast(mode === "signup" ? "Account created. Welcome back!" : "Welcome back!");
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 500);
+  } else {
+    openQuestionnaire();
+  }
 }
 
 function openQuestionnaire() {
@@ -424,7 +429,7 @@ function personalizeHome() {
   }
   if (lessonTitle) lessonTitle.textContent = `Today: ${profile.instrument} ${profile.style || "practice"} path`;
   if (lessonHint) {
-    lessonHint.textContent = `Coaching focus: ${profile.purpose}. Support mode: ${profile.support || "Coach"}. Start with a short warmup and one confidence-building drill.`;
+    lessonHint.textContent = `Coaching focus: ${profile.purpose}. Start with a short warmup and one confidence-building drill.`;
   }
 }
 
