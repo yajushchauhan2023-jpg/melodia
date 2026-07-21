@@ -328,54 +328,96 @@ if (completeCheckout) completeCheckout.addEventListener("click", () => {
   const plan = completeCheckout.dataset.plan || "Pro";
   storage.set("melodiaLoggedIn", "true");
   storage.set("melodiaSubscription", plan.toLowerCase() === "elite" ? "elite" : "trial");
+  storage.set("melodiaTrialStart", String(Date.now()));
   showToast(`${plan} trial started. Redirecting to billing dashboard...`);
   setTimeout(() => {
     window.location.href = `dashboard.html?trial=${plan.toLowerCase()}`;
   }, 900);
 });
 
-document.querySelectorAll("[data-billing-action]").forEach((button) => {
-  button.addEventListener("click", () => {
-    const action = button.dataset.billingAction;
-    const status = document.getElementById("billingStatus");
-    const statusText = document.getElementById("statusText");
-    const accessText = document.getElementById("accessText");
-    const message = document.getElementById("billingMessage");
-    const plan = document.getElementById("dashboardPlan");
-    const price = document.getElementById("monthlyPrice");
+renderBillingDashboard();
 
-    if (action === "portal") {
-      message.textContent = "Stripe Billing Portal opened: update card, download invoices, or manage subscription.";
-      showToast("Opening billing portal preview.");
-    }
+function renderBillingDashboard() {
+  const container = document.getElementById("billingDashboard");
+  if (!container) return;
 
-    if (action === "upgrade") {
-      plan.textContent = "Elite";
-      price.textContent = "$39.99";
-      storage.set("melodiaSubscription", "elite");
-      applyEliteLocks();
-      message.textContent = "Upgrade preview: Pro to Elite is prorated instantly in the production Stripe flow.";
-      showToast("Plan upgraded to Elite.");
-    }
+  const subscription = getSubscription();
 
-    if (action === "cancel") {
-      storage.set("melodiaSubscription", "none");
-      status.textContent = "canceled";
-      status.className = "billing-status canceled";
-      statusText.textContent = "Canceled";
-      accessText.textContent = "Unlocked until trial ends";
-      message.textContent = "Trial canceled. No charge will happen after day 30.";
-      showToast("Trial canceled. No charge scheduled.");
-    }
+  if (subscription === "none") {
+    container.innerHTML = `
+      <div class="billing-empty">
+        <p class="eyebrow">Billing</p>
+        <h2>You do not have any access to premium features.</h2>
+        <p>If you want access to your Coach, decoder, feedback, and full dashboard, choose a plan to get started.</p>
+        <a class="primary-action" href="./pricing.html">Buy a Plan</a>
+      </div>`;
+    return;
+  }
 
+  const planName = subscription === "elite" ? "Elite" : "Pro";
+  const monthlyPrice = subscription === "elite" ? "$39.99" : "$14.99";
+  const trialStart = Number(storage.get("melodiaTrialStart")) || Date.now();
+  const daysElapsed = Math.floor((Date.now() - trialStart) / 86400000);
+  const daysLeft = Math.max(0, 30 - daysElapsed);
+  const progressPct = Math.min(100, Math.round((daysElapsed / 30) * 100));
+  const nextBillingDate = new Date(trialStart + 30 * 86400000).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric"
   });
+
+  container.innerHTML = `
+    <div class="billing-head">
+      <div><p class="eyebrow">Billing</p><h2>${daysLeft} days left in your free trial</h2><p>Current plan: <strong>${planName}</strong>. Next billing date: <strong>${nextBillingDate}</strong>.</p></div>
+      <span class="billing-status" id="billingStatus">trialing</span>
+    </div>
+    <div class="trial-progress"><span style="width:${progressPct}%"></span></div>
+    <div class="billing-details">
+      <div><span>Status</span><strong id="statusText">Trialing</strong></div>
+      <div><span>Payment method</span><strong>Visa ending 4242</strong></div>
+      <div><span>Monthly price after trial</span><strong id="monthlyPrice">${monthlyPrice}</strong></div>
+      <div><span>Premium access</span><strong id="accessText">Unlocked</strong></div>
+    </div>
+    <div class="billing-actions">
+      <button class="primary-action small" data-billing-action="portal">Manage billing portal</button>
+      ${subscription !== "elite" ? '<button class="secondary-action small" data-billing-action="upgrade">Upgrade to Elite</button>' : ""}
+      <button class="secondary-action small danger-soft" data-billing-action="cancel">Cancel trial</button>
+    </div>
+    <div class="billing-message" id="billingMessage">Your card will not be charged until your free trial ends.</div>`;
+}
+
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-billing-action]");
+  if (!button) return;
+  const action = button.dataset.billingAction;
+  const message = document.getElementById("billingMessage");
+
+  if (action === "portal") {
+    message.textContent = "Billing portal opened: update card, download invoices, or manage subscription.";
+    showToast("Opening billing portal.");
+  }
+
+  if (action === "upgrade") {
+    storage.set("melodiaSubscription", "elite");
+    applyEliteLocks();
+    renderBillingDashboard();
+    showToast("Plan upgraded to Elite.");
+  }
+
+  if (action === "cancel") {
+    storage.set("melodiaSubscription", "none");
+    storage.remove("melodiaTrialStart");
+    applyEliteLocks();
+    renderBillingDashboard();
+    showToast("Trial canceled. No charge scheduled.");
+  }
 });
 
 function updateSessionChrome() {
   const loggedIn = isLoggedIn();
-  const profile = readProfile();
-  const displayName = profile?.instrument ? `${profile.instrument} student` : "Melodia student";
-  const initial = displayName.charAt(0).toUpperCase();
+  const name = storage.get("melodiaUserName");
+  const displayName = name || "Melodia student";
+  const initial = displayName.trim().charAt(0).toUpperCase() || "M";
 
   document.querySelectorAll(".session-chrome").forEach((chrome) => {
     chrome.classList.toggle("logged-in", loggedIn);
@@ -393,6 +435,9 @@ function handleAuthSubmit(event, mode) {
   storage.set("melodiaLoggedIn", "true");
   if (mode === "signup") {
     storage.set("melodiaSubscription", "trial");
+    const nameField = event.target.querySelector("[name='fullName']");
+    const name = nameField?.value.trim();
+    if (name) storage.set("melodiaUserName", name);
   } else if (!storage.get("melodiaSubscription")) {
     storage.set("melodiaSubscription", "none");
   }

@@ -6,25 +6,7 @@
     <main>
       <section class="page-hero"><p class="eyebrow">Student dashboard</p><h1>See your progress and billing in one place.</h1><p>Track music progress, manage your 30-day trial, update payment details, upgrade, downgrade, or cancel anytime.</p></section>
       <section><div class="dashboard-grid"><div class="progress-card card"><div class="ring" style="--progress:82"><span>82%</span></div><strong>Accuracy score</strong></div><div class="stats-card card"><span>Practice streak</span><strong>7 days</strong><span>Weekly hours</span><strong>4.5</strong><span>Teacher bookings</span><strong>2 upcoming</strong><span>Decoder history</span><strong>14 sheets</strong></div><div class="recent-card card"><h3>Recent lessons</h3><p>C major scale, rhythm clapback, sight-reading basics.</p><div class="milestone-art">♪</div></div><div class="achievements card"><h3>Achievement badges</h3><div><span>First Song</span><span>7 Day Streak</span><span>Theory Explorer</span><span>Perfect Pitch</span><span>Rhythm Master</span></div></div></div></section>
-      <section class="billing-dashboard card">
-        <div class="billing-head">
-          <div><p class="eyebrow">Billing</p><h2>24 days left in your free trial</h2><p>Current plan: <strong id="dashboardPlan">Pro</strong>. Next billing date: <strong>June 16, 2026</strong>.</p></div>
-          <span class="billing-status" id="billingStatus">trialing</span>
-        </div>
-        <div class="trial-progress"><span style="width:20%"></span></div>
-        <div class="billing-details">
-          <div><span>Status</span><strong id="statusText">Trialing</strong></div>
-          <div><span>Payment method</span><strong>Visa ending 4242</strong></div>
-          <div><span>Monthly price after trial</span><strong id="monthlyPrice">$14.99</strong></div>
-          <div><span>Premium access</span><strong id="accessText">Unlocked</strong></div>
-        </div>
-        <div class="billing-actions">
-          <button class="primary-action small" data-billing-action="portal">Manage billing portal</button>
-          <button class="secondary-action small" data-billing-action="upgrade">Upgrade to Elite</button>
-          <button class="secondary-action small danger-soft" data-billing-action="cancel">Cancel trial</button>
-        </div>
-        <div class="billing-message" id="billingMessage">Your card will not be charged until your free trial ends.</div>
-      </section>
+      <section class="billing-dashboard card" id="billingDashboard"></section>
     </main>
     <div class="toast" id="toast">Dashboard loaded.</div><script src="./app.js"></script>
   </body>
