@@ -1,7 +1,14 @@
+import { auth } from "@clerk/nextjs/server";
 import { plans } from "@/lib/plans";
+import { prisma } from "@/lib/prisma";
+import { hasPremiumAccess } from "@/lib/subscriptions";
 import { CheckoutButton } from "@/components/billing/CheckoutButton";
 
-export default function PricingPage() {
+export default async function PricingPage() {
+  const { userId } = await auth();
+  const user = userId ? await prisma.user.findUnique({ where: { id: userId } }) : null;
+  const subscribed = hasPremiumAccess(user);
+
   return (
     <main className="shell">
       <section className="hero">
@@ -25,7 +32,15 @@ export default function PricingPage() {
             <ul className="features">
               {plan.features.map((feature) => <li key={feature}>{feature}</li>)}
             </ul>
-            <CheckoutButton plan={plan.id}>Start {plan.name} trial</CheckoutButton>
+            {subscribed && user?.currentPlan === plan.id ? (
+              <p>
+                <strong>You're on this plan.</strong> <a className="button secondary" href="/dashboard/billing">Manage billing</a>
+              </p>
+            ) : subscribed ? (
+              <a className="button secondary" href="/dashboard/billing">Switch plan in billing</a>
+            ) : (
+              <CheckoutButton plan={plan.id}>Start {plan.name} trial</CheckoutButton>
+            )}
           </article>
         ))}
       </section>

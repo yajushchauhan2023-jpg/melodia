@@ -8,6 +8,7 @@ import { prisma } from "@/lib/prisma";
 import { sendEmail } from "@/lib/email";
 import { sendLifecycleEmailOnce } from "@/lib/lifecycle-email";
 import { stripe } from "@/lib/stripe";
+import { mapStripeStatus } from "@/lib/subscriptions";
 
 export const runtime = "nodejs";
 
@@ -159,14 +160,6 @@ async function handleTrialWillEnd(subscription: Stripe.Subscription) {
 
   const template = emails.trialEndingSoon(3, appUrl);
   await sendLifecycleEmailOnce(user.id, user.email, "trial_ending_stripe_3_days", template.subject, template.html);
-}
-
-function mapStripeStatus(status: Stripe.Subscription.Status) {
-  if (status === "trialing") return "trialing";
-  if (status === "active") return "active";
-  if (status === "past_due" || status === "unpaid") return "past_due";
-  if (status === "canceled") return "canceled";
-  return "expired";
 }
 
 function getInvoiceSubscriptionId(invoice: Stripe.Invoice) {

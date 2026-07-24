@@ -24,7 +24,7 @@ export default async function TutorPage() {
         <p>{user.instrument} · {user.level} · {user.goal}</p>
       </section>
 
-      <TutorChat instrument={user.instrument} />
+      <TutorChat instrument={user.instrument} level={user.level} goal={user.goal} lessonTitle={currentLesson.title} />
 
       <div className="tutor-lower-grid">
         <div className="card">

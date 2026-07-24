@@ -5,9 +5,12 @@ import type { BillingPlan } from "@/lib/plans";
 
 export function CheckoutButton({ plan, children }: { plan: BillingPlan; children: React.ReactNode }) {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   async function startCheckout() {
+    if (loading) return;
     setLoading(true);
+    setError(null);
     const res = await fetch("/api/billing/checkout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -17,13 +20,16 @@ export function CheckoutButton({ plan, children }: { plan: BillingPlan; children
     if (data.url) window.location.href = data.url;
     else {
       setLoading(false);
-      alert(data.error || "Could not start checkout");
+      setError(data.error || "Could not start checkout");
     }
   }
 
   return (
-    <button className="button" disabled={loading} onClick={startCheckout}>
-      {loading ? "Opening checkout..." : children}
-    </button>
+    <div>
+      <button className="button" disabled={loading} onClick={startCheckout}>
+        {loading ? "Opening checkout..." : children}
+      </button>
+      {error && <p className="inline-message error">{error}</p>}
+    </div>
   );
 }

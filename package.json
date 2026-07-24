@@ -14,10 +14,13 @@
   "dependencies": {
     "@clerk/nextjs": "^6.24.0",
     "@prisma/client": "^6.10.0",
+    "fast-xml-parser": "^5.10.1",
     "next": "^15.5.20",
+    "opensheetmusicdisplay": "^2.0.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "resend": "^4.6.0",
+    "smplr": "^1.0.0",
     "stripe": "^18.2.0"
   },
   "devDependencies": {
