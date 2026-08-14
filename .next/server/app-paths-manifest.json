@@ -1,0 +1,8 @@
+{
+  "/api/billing/checkout/route": "app/api/billing/checkout/route.js",
+  "/pricing/page": "app/pricing/page.js",
+  "/dashboard/billing/page": "app/dashboard/billing/page.js",
+  "/decoder/page": "app/decoder/page.js",
+  "/page": "app/page.js",
+  "/upgrade/page": "app/upgrade/page.js"
+}

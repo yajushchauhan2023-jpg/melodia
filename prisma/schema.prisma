@@ -1,0 +1,93 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum SubscriptionStatus {
+  trialing
+  active
+  past_due
+  canceled
+  expired
+}
+
+enum Plan {
+  free_trial
+  pro
+  elite
+}
+
+enum DecodeJobStatus {
+  uploaded
+  processing
+  completed
+  failed
+}
+
+model User {
+  id                   String             @id
+  email                String             @unique
+  stripeCustomerId     String?            @unique
+  stripeSubscriptionId String?            @unique
+  subscriptionStatus   SubscriptionStatus @default(expired)
+  trialEndsAt          DateTime?
+  currentPlan          Plan               @default(free_trial)
+  canceledAt           DateTime?
+  createdAt            DateTime           @default(now())
+  updatedAt            DateTime           @updatedAt
+  emailLogs            EmailLog[]
+  decodeJobs           DecodeJob[]
+
+  // Lesson plan profile, collected once at signup onboarding
+  instrument           String?
+  level                String?
+  goal                 String?
+  weeklyTime           String?
+  lessonIndex          Int                @default(0)
+  lessonPlanUpdatedAt  DateTime?
+}
+
+model EmailLog {
+  id        String   @id @default(cuid())
+  userId    String
+  type      String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, type])
+}
+
+// Tracks a single "upload sheet music -> get MusicXML back" pipeline run.
+// Processing happens out-of-process in the OMR microservice (see /omr-service),
+// which calls back to /api/decoder/jobs/[id]/callback when it finishes. This lets
+// the browser poll a lightweight status endpoint instead of holding a long-lived
+// request open, which is what keeps the upload/processing UI responsive.
+model DecodeJob {
+  id            String          @id @default(cuid())
+  userId        String
+  status        DecodeJobStatus @default(uploaded)
+  fileName      String
+  fileType      String
+  fileSizeBytes Int
+
+  // Populated once status = completed
+  musicXml      String?         @db.Text
+  keySignature  String?
+  timeSignature String?
+  tempo         Int?
+  measureCount  Int?
+  noteNamesJson String?         @db.Text // ordered note-name sequence, used by Beginner Mode
+
+  // Populated if status = failed — always a friendly, user-safe message
+  errorMessage  String?
+
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  user          User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}

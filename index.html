@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Melodia | Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="shape shape-one" aria-hidden="true"></div>
+    <div class="shape shape-two" aria-hidden="true"></div>
+    <div class="notes-field" aria-hidden="true"></div>
+
+    <header class="nav-shell">
+      <a class="brand" href="./index.html"><span class="brand-mark">♪</span><span>Melodia</span></a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="./index.html">Home</a>
+        <a href="./tutor.html">Coach</a>
+        <a href="./decoder.html">Decoder</a>
+        <a href="./teachers.html">Teachers</a>
+        <a href="./pricing.html">Plans</a>
+        <a href="./dashboard.html">Dashboard</a>
+        <a href="./about.html">About</a>
+      </nav>
+      <div class="session-chrome" id="sessionChrome">
+        <button class="login-btn" type="button">Login</button>
+        <div class="profile-menu" id="profileMenu">
+          <button class="profile-trigger" id="profileTrigger" type="button" aria-haspopup="true" aria-expanded="false">
+            <span class="profile-avatar" id="profileAvatar">M</span>
+          </button>
+          <div class="profile-dropdown" id="profileDropdown" role="menu">
+            <span class="profile-dropdown-name" id="profileDropdownName">Melodia student</span>
+            <a href="./pricing.html" role="menuitem">Plans</a>
+            <a href="./dashboard.html" role="menuitem">Dashboard</a>
+            <a href="./profile.html" role="menuitem">Profile</a>
+            <a href="./settings.html" role="menuitem">Settings</a>
+            <button class="logout-btn" id="logoutBtn" type="button" role="menuitem">Log out</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-section">
+        <div class="hero-copy">
+          <p class="eyebrow">Personalised coaching for real progress</p>
+          <h1 id="homeHeadline">Master Music with Your Personal Coach</h1>
+          <p class="hero-subtext" id="homeSubtext">Master instruments, decode sheet music, and learn at your own pace with intelligent lessons built just for you.</p>
+          <div class="hero-actions">
+            <a class="primary-action" href="./pricing.html">Buy our plans</a>
+            <a class="secondary-action" href="./tutor.html">Continue learning with coach</a>
+          </div>
+          <div class="trust-row"><span>12k+ learners</span><span>Practice feedback</span><span>Live teachers</span></div>
+        </div>
+        <div class="hero-visual">
+          <div class="photo-card hero-photo" role="img" aria-label="Cheerful teenager learning piano with tablet guidance"></div>
+          <div class="lesson-widget card">
+            <div class="widget-icon">♪</div>
+            <div><strong id="homeLessonTitle">Today: C major melody</strong><span id="homeLessonHint">Great rhythm. Try measure 4 once more.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading center">
+          <p class="eyebrow">Explore Melodia</p>
+          <h2>Everything has its own place now.</h2>
+        </div>
+        <div class="page-card-grid">
+          <a class="page-card card" href="./tutor.html"><span>01</span><h3>Coach</h3><p>Get a lesson plan, plus a roadmap, interactive lesson, and warm chat coach.</p></a>
+          <a class="page-card card" href="./decoder.html"><span>02</span><h3>Sheet decoder</h3><p>Upload sheet music and translate it into readable note letters.</p></a>
+          <a class="page-card card" href="./teachers.html"><span>03</span><h3>Teachers</h3><p>Book friendly human coaches and trial lessons.</p></a>
+          <a class="page-card card" href="./dashboard.html"><span>04</span><h3>Dashboard</h3><p>Track streaks, accuracy, lessons, bookings, and badges.</p></a>
+          <a class="page-card card" href="./pricing.html"><span>05</span><h3>Plans</h3><p>Compare Free, Pro, and Elite plans.</p></a>
+          <a class="page-card card" href="./about.html"><span>06</span><h3>About us</h3><p>See the product vision and production architecture.</p></a>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading center">
+          <p class="eyebrow">How it works</p>
+          <h2>A clear path from first note to favorite song.</h2>
+        </div>
+        <div class="how-grid">
+          <article class="how-card card"><div class="how-image choose"></div><span class="number">01</span><h3>Sign up & get your plan</h3><p>Answer a few quick questions once at signup and Melodia builds your personal roadmap automatically.</p></article>
+          <article class="how-card card"><div class="how-image tutor"></div><span class="number">02</span><h3>Practice with your Coach</h3><p>Follow guided lessons, ask questions, and get patient explanations.</p></article>
+          <article class="how-card card"><div class="how-image feedback-img"></div><span class="number">03</span><h3>Improve with feedback</h3><p>Use pitch, timing, rhythm, and tempo guidance to practice smarter.</p></article>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast">Welcome to Melodia.</div>
+    <script src="./app.js"></script>
+  </body>
+</html>
