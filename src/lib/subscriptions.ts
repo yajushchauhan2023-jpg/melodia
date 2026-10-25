@@ -1,5 +1,4 @@
 import { Plan, SubscriptionStatus, User } from "@prisma/client";
-import type Stripe from "stripe";
 
 export const premiumStatuses: SubscriptionStatus[] = ["trialing", "active"];
 
@@ -15,12 +14,4 @@ export function trialDaysRemaining(trialEndsAt?: Date | null) {
 
 export function isUpgrade(from: Plan, to: Plan) {
   return from === "pro" && to === "elite";
-}
-
-export function mapStripeStatus(status: Stripe.Subscription.Status): SubscriptionStatus {
-  if (status === "trialing") return "trialing";
-  if (status === "active") return "active";
-  if (status === "past_due" || status === "unpaid") return "past_due";
-  if (status === "canceled") return "canceled";
-  return "expired";
 }

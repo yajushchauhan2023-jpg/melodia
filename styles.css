@@ -1132,3 +1132,25 @@ p, small { color: var(--muted); line-height: 1.7; }
   .chat-input { flex-direction: column; }
   .piano { min-height: 140px; }
 }
+
+/* Teacher marketplace (uses existing tokens) */
+.filters label, .booking-panel label { display: grid; gap: 6px; font-weight: 700; font-size: .85rem; color: var(--muted); min-width: 140px; }
+.filters select, .filters input, .booking-panel select { min-height: 44px; border: 1px solid var(--border); border-radius: 14px; padding: 0 12px; background: #fffdf8; color: var(--ink); }
+.filters select:focus-visible, .filters input:focus-visible, .slot:focus-visible, .pager button:focus-visible { outline: 3px solid rgba(65,105,225,.4); outline-offset: 2px; }
+.teacher-market .teacher-card { display: flex; flex-direction: column; }
+.teacher-card .primary-action { margin-top: auto; background: var(--blue); color: #fff; }
+.teacher-initials { display: grid; place-items: center; font: 800 2.4rem Poppins, Inter, sans-serif; color: #fff; background: linear-gradient(135deg, var(--blue), var(--coral)); }
+.price-line, .next-slot, .policy, .demo-note { margin: 4px 0; font-size: .9rem; }
+.next-slot { color: #2d8b6f; font-weight: 700; }
+.demo-note { color: var(--coral); font-weight: 700; }
+.profile-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 22px; align-items: start; padding-top: 28px; }
+.slot-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin: 14px 0; max-height: 280px; overflow: auto; }
+.slot { min-height: 44px; border: 1px solid var(--border); border-radius: 14px; background: #eef8f4; color: #2d8b6f; font-weight: 800; cursor: pointer; }
+.slot.selected, .slot:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+.booking-panel .primary-action { width: 100%; background: var(--blue); color: #fff; margin-top: 10px; }
+.booking-panel .primary-action:disabled { opacity: .55; cursor: not-allowed; }
+.pager { display: flex; gap: 8px; justify-content: center; margin-top: 24px; }
+.pager button { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border); background: #fffdf8; cursor: pointer; font-weight: 800; }
+.pager button.active { background: var(--blue); color: #fff; }
+.empty-state { text-align: center; grid-column: 1 / -1; }
+@media (max-width: 880px) { .teacher-market { grid-template-columns: 1fr; } .profile-grid { grid-template-columns: 1fr; } }

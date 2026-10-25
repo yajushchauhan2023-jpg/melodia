@@ -1,17 +1,15 @@
 import { requirePremiumAccess } from "@/lib/access";
-import { DecoderExperience } from "@/components/decoder/DecoderExperience";
 
 export default async function DecoderPage() {
   await requirePremiumAccess();
 
   return (
-    <main className="shell decoder-page">
+    <main className="shell">
       <section className="hero">
         <p className="eyebrow">Premium sheet decoder</p>
-        <h1>Turn a photo of sheet music into something you can play.</h1>
-        <p>Upload a photo, PDF, MusicXML, or MIDI file and Melodia will read the notation, then let you play it back, view piano notes or guitar tabs, and export it.</p>
+        <h1>Upload sheet music and decode it with Melodia.</h1>
+        <p>This premium route redirects to the upgrade page unless the user is trialing or active.</p>
       </section>
-      <DecoderExperience />
     </main>
   );
 }

@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/prisma";
 import { stripe } from "@/lib/stripe";
-import { mapStripeStatus } from "@/lib/subscriptions";
 
 export async function POST() {
   const { userId } = await auth();
@@ -21,14 +20,9 @@ export async function POST() {
     where: { id: userId },
     data: {
       canceledAt: new Date(),
-      subscriptionStatus: mapStripeStatus(subscription.status)
+      subscriptionStatus: subscription.status === "trialing" ? "trialing" : "active"
     }
   });
 
-  const periodEnd = subscription.items.data[0]?.current_period_end;
-
-  return NextResponse.json({
-    ok: true,
-    accessEndsAt: periodEnd ? new Date(periodEnd * 1000).toISOString() : null
-  });
+  return NextResponse.json({ ok: true });
 }
