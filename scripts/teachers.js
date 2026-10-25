@@ -31,8 +31,12 @@
     };
     Object.values(f).forEach(e => e.addEventListener("input", () => { page = 1; render(); }));
     $("#pager").addEventListener("click", e => { const p = e.target.dataset.p; if (p) { page = +p; render(); } });
+    const qs = new URLSearchParams(location.search);
+    if (qs.get("inst")) f.inst.value = qs.get("inst"); if (qs.get("fmt")) f.fmt.value = qs.get("fmt");
     render();
   }
+  const feat = $("#featuredTeachers");
+  if (feat) feat.innerHTML = window.TEACHERS.slice(0, 3).map(t => { const n = nextSlot(t); return `<article class="teacher-card card">${photo(t)}<h3>${esc(t.name)}</h3><p>${esc(t.instruments.join(", "))}</p><div class="teacher-meta"><span>★ ${t.rating}</span><span>${money(t.price)}/hr</span></div><p class="next-slot">${n ? "Next: " + fmt(n) : "No open slots"}</p><a class="primary-action" href="./teacher.html?id=${t.id}">View profile</a></article>`; }).join("");
 
   /* ---------- Profile + booking ---------- */
   const prof = $("#teacherProfile");

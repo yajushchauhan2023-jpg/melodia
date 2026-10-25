@@ -34,13 +34,6 @@ model User {
   updatedAt            DateTime           @updatedAt
   emailLogs            EmailLog[]
 
-  // Lesson plan profile, collected once at signup onboarding
-  instrument           String?
-  level                String?
-  goal                 String?
-  weeklyTime           String?
-  lessonIndex          Int                @default(0)
-  lessonPlanUpdatedAt  DateTime?
 
   // Marketplace (replaces subscriptions; legacy subscription fields above are deprecated)
   role                 Role               @default(student)
@@ -73,6 +66,11 @@ model TeacherProfile {
   formats        String[]
   languages      String[]
   hourlyPrice    Int           // whole KSh
+  qualifications String
+  yearsExperience Int
+  reviewNote     String?
+  reviewedAt     DateTime?
+  reviewedBy     String?
   timezone       String        @default("Africa/Nairobi")
   status         TeacherStatus @default(pending) // verification is an explicit admin action
   createdAt      DateTime      @default(now())

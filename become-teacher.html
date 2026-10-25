@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Melodia | Become a Teacher</title><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" /><link rel="stylesheet" href="./styles.css" /></head>
+<body><a class="skip" href="#main">Skip to content</a><div id="siteHeader"></div>
+<main id="main">
+<section class="page-hero"><p class="eyebrow">For teachers</p><h1>Teach on Melodia.</h1><p>Reach students, set your own prices and let us handle bookings and payments.</p></section>
+<section class="steps"><article class="card"><h3>Benefits</h3><p>Steady student enquiries, a professional profile and simple scheduling.</p></article><article class="card"><h3>Onboarding</h3><p>Apply below. Our team reviews every application before your profile goes live.</p></article><article class="card"><h3>Commission and payouts</h3><p>Melodia keeps a commission on completed lessons (15% in this example, subject to change); you receive the rest.</p></article></section>
+<section class="block"><h2>Teacher application</h2><form class="card form-grid" id="applyForm" novalidate>
+<label>Full name<input name="displayName" required minlength="2" maxlength="80" /></label>
+<fieldset><legend>Instruments you teach</legend><div class="check-row"><label class="check"><input type="checkbox" name="instruments" value="Piano" /> Piano</label><label class="check"><input type="checkbox" name="instruments" value="Guitar" /> Guitar</label><label class="check"><input type="checkbox" name="instruments" value="Voice" /> Voice</label><label class="check"><input type="checkbox" name="instruments" value="Violin" /> Violin</label><label class="check"><input type="checkbox" name="instruments" value="Drums" /> Drums</label><label class="check"><input type="checkbox" name="instruments" value="Music Theory" /> Music Theory</label></div></fieldset>
+<label>Years of experience<input name="years" type="number" min="0" max="70" required /></label>
+<label>Hourly price (KSh)<input name="price" type="number" min="200" max="50000" required /></label>
+<fieldset><legend>Lesson formats</legend><div class="check-row"><label class="check"><input type="checkbox" name="formats" value="Online" /> Online</label><label class="check"><input type="checkbox" name="formats" value="In person" /> In person</label></div></fieldset>
+<label>Languages (comma separated)<input name="languages" required /></label>
+<label class="wide">Qualifications<textarea name="qualifications" rows="3" required maxlength="1000"></textarea></label>
+<label class="wide">Short bio<textarea name="bio" rows="4" required maxlength="1200"></textarea></label>
+<label class="wide">Profile photo (JPG or PNG, max 2 MB)<input name="photo" type="file" accept="image/jpeg,image/png" /></label>
+<label class="check wide"><input type="checkbox" name="terms" required /> I accept the teacher terms, including that students found through Melodia are booked and paid through Melodia.</label>
+<button class="primary-action" type="submit">Submit application</button><p class="form-status wide" id="applyStatus" role="status"></p></form>
+<p class="policy">Submitting does not make you a verified teacher. Every application is reviewed by an administrator. You need to be signed in to apply.</p></section></main>
+<div id="siteFooter"></div>
+<script src="./scripts/apply.js"></script>
+<script src="./scripts/site.js"></script>
+</body></html>

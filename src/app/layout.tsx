@@ -3,8 +3,8 @@ import { ClerkProvider, SignedIn, SignedOut, SignInButton, UserButton } from "@c
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Melodia Billing",
-  description: "Personalised music coaching with Stripe subscriptions"
+  title: "Melodia",
+  description: "Connecting students with music teachers"
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -18,12 +18,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <span>Melodia</span>
             </a>
             <nav className="nav-links">
-              <a href="/tutor">Coach</a>
-              <a href="/pricing">Plans</a>
               <a href="/dashboard">Dashboard</a>
-              <a href="/dashboard/billing">Billing</a>
               <a href="/profile">Profile</a>
-              <a href="/about">About</a>
+              <a href="/admin">Admin</a>
             </nav>
             <SignedOut>
               <SignInButton mode="modal">
